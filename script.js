@@ -27,6 +27,25 @@ const loadLevelWord=(id) =>{
         
         
 };
+
+ const loaWordDetail= async(id)=>{
+    const url=`https://openapi.programming-hero.com/api/word/${id}`;
+    //console.log(url);
+    const res= await fetch(url);
+    const details=await res.json();
+    displaywordDetails(details.data);
+
+ };
+ const displaywordDetails=(word) =>{
+    console.log(word);
+    const detailBox=document.getElementById("details-container");
+    //detailBox.innerHTML=` `;
+
+
+    document.getElementById("my_modal_5").showModal();
+
+ };
+
 const displaylevlWOrd=(words) =>{
     const wordContainer=document.getElementById("word-container");
     wordContainer.innerHTML="";
@@ -44,7 +63,7 @@ const displaylevlWOrd=(words) =>{
     }
 
     words.forEach(word =>{
-        console.log(word);
+       // console.log(word);
         const cards=document.createElement("div");
         cards.innerHTML=`
         <div class="bg-white rounded-xl shadow-sm text-center py-20 px-5 space-y-4">
@@ -54,7 +73,7 @@ const displaylevlWOrd=(words) =>{
 
               <div class="text-2xl font-medium font-bangla">"${word.meaning ? word.meaning:"অর্থ পাওয়া যায়নি"} / ${word.pronunciation ? word.pronunciation:"Pronunciation পাওয়া যায়নি "}"</div>
               <div class="flex justify-between items-center">
-                <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-circle-info"></i></button>
+                <button onclick="loaWordDetail(${word.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-circle-info"></i></button>
                 <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-volume-high"></i></button>
 
               </div>
