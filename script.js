@@ -39,7 +39,24 @@ const loadLevelWord=(id) =>{
  const displaywordDetails=(word) =>{
     console.log(word);
     const detailBox=document.getElementById("details-container");
-    //detailBox.innerHTML=` `;
+    detailBox.innerHTML=`
+    <div class="">
+          <h2 class="text-2xl font-bold">${word.word} (<i class="fa-solid fa-microphone-lines"></i>:${word.pronunciation})</h2>
+        </div>
+        <div class="">
+          <h2 class=" font-bold">Meaning</h2>
+          <p>${word.meaning}</p>
+        </div>
+         <div class="">
+          <h2 class=" font-bold">Examples</h2>
+          <p>${word.sentence}</p>
+        </div>
+         <div class="">
+          <h2 class=" font-bold">Synonym</h2>
+          <span class="btn">syn1</span>
+             <span class="btn">syn1</span>
+                <span class="btn">syn1</span>
+        </div> `;
 
 
     document.getElementById("my_modal_5").showModal();
